@@ -6,11 +6,11 @@ import org.apache.log4j.Logger;
  * @author jonasabreu
  * 
  */
-final public class DefaultLoggerWraper implements LoggerWraper {
+final public class DefaultLoggerWrapper implements LoggerWrapper {
 
     private final Logger logger;
 
-    public DefaultLoggerWraper(final Class<?> type) {
+    public DefaultLoggerWrapper(final Class<?> type) {
         logger = Logger.getLogger(type);
     }
 

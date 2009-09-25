@@ -4,7 +4,7 @@ package net.vidageek.i18n.el.log;
  * @author jonasabreu
  * 
  */
-public interface LoggerWraper {
+public interface LoggerWrapper {
 
     public void warn(final String message, final Throwable t);
 

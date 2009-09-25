@@ -6,7 +6,7 @@ package net.vidageek.i18n.el.log;
  */
 final public class Logger {
 
-    private final LoggerWraper logger;
+    private final LoggerWrapper logger;
     private static boolean foundLog4j;
 
     static {
@@ -22,7 +22,7 @@ final public class Logger {
 
     public Logger(final Class<?> type) {
         if (foundLog4j) {
-            logger = new DefaultLoggerWraper(type);
+            logger = new DefaultLoggerWrapper(type);
         } else {
             logger = new NoActionLoggerWrapper();
         }
