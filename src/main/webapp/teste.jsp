@@ -9,7 +9,7 @@
 </head>
 <body>
 
-${i18n.teste.a }
+${i18n.teste}
 
 
 </body>
