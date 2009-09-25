@@ -29,8 +29,13 @@ final public class I18nHandler {
         try {
             properties.load(I18nHandler.class.getResourceAsStream("/messages.properties"));
         } catch (IOException e) {
-            log.info("Could not find i18n properties message.properties", e);
+            log.warn("Could not find i18n properties message.properties", e);
         }
-        return properties.getProperty(i18nKey);
+        String value = properties.getProperty(i18nKey);
+        if (value == null) {
+            log.warn("Could not find value for key: " + i18nKey);
+            return "??? " + i18nKey + " ???";
+        }
+        return value;
     }
 }
