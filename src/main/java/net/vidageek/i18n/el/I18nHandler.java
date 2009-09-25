@@ -3,7 +3,7 @@ package net.vidageek.i18n.el;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import net.vidageek.i18n.el.log.Logger;
 
 /**
  * @author jonasabreu
@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
  */
 final public class I18nHandler {
 
-    private static final Logger log = Logger.getLogger(I18nHandler.class);
+    private static final Logger log = new Logger(I18nHandler.class);
 
     private final String i18nKey;
 
@@ -31,6 +31,7 @@ final public class I18nHandler {
         } catch (IOException e) {
             log.warn("Could not find i18n properties message.properties", e);
         }
+
         String value = properties.getProperty(i18nKey);
         if (value == null) {
             log.warn("Could not find value for key: " + i18nKey);
