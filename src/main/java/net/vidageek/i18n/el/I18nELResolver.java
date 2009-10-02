@@ -7,17 +7,27 @@ import java.util.Iterator;
 import javax.el.ELContext;
 import javax.el.ELResolver;
 
+import net.vidageek.i18n.message.BundleLocator;
+import net.vidageek.i18n.message.LanguageLocator;
+import net.vidageek.i18n.message.MessageFactory;
+
 /**
  * @author jonasabreu
  * 
  */
 final public class I18nELResolver extends ELResolver {
 
+    private final MessageFactory factory;
+
+    public I18nELResolver() {
+        factory = new MessageFactory(new LanguageLocator(), new BundleLocator());
+    }
+
     @Override
     public Object getValue(final ELContext context, final Object base, final Object property) {
         if ("i18n".equals(property.toString())) {
             context.setPropertyResolved(true);
-            return new I18nHandler("");
+            return new I18nHandler("", factory);
         }
         if ((base != null) && I18nHandler.class.equals(base.getClass())) {
             context.setPropertyResolved(true);
@@ -25,7 +35,7 @@ final public class I18nELResolver extends ELResolver {
             if (!"".equals(key)) {
                 key += ".";
             }
-            return new I18nHandler(key + property);
+            return new I18nHandler(key + property, factory);
 
         }
         return null;
