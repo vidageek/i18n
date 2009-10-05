@@ -1,5 +1,6 @@
 package net.vidageek.i18n.el;
 
+import net.vidageek.i18n.el.log.Logger;
 import net.vidageek.i18n.message.MessageFactory;
 
 /**
@@ -7,6 +8,8 @@ import net.vidageek.i18n.message.MessageFactory;
  * 
  */
 final public class I18nHandler {
+
+    private static final Logger log = new Logger(I18nHandler.class);
 
     private final String i18nKey;
     private final MessageFactory factory;

@@ -14,4 +14,8 @@ final public class NoActionLoggerWrapper implements LoggerWrapper {
 
     }
 
+    public void debug(final String string) {
+
+    }
+
 }

@@ -9,7 +9,9 @@
 </head>
 <body>
 
-${i18n.test}
+Test file <br/>
+
+${i18n.test.bla}
 
 
 </body>

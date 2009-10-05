@@ -8,16 +8,16 @@ package net.vidageek.i18n.message;
 final public class MessageFactory {
 
     private final LanguageLocator languageLocator;
-    private final BundleLocator bundleLocator;
+    private final MessageProducerLocator producerLocator;
 
-    public MessageFactory(final LanguageLocator languageLocator, final BundleLocator bundleLocator) {
+    public MessageFactory(final LanguageLocator languageLocator, final MessageProducerLocator producerLocator) {
         this.languageLocator = languageLocator;
-        this.bundleLocator = bundleLocator;
+        this.producerLocator = producerLocator;
     }
 
     public String getMessage(final String i18nKey) {
 
-        MessageProducer producer = bundleLocator.findBundle(languageLocator.findLanguage());
+        MessageProducer producer = producerLocator.findProducer(languageLocator.findLanguage());
 
         return producer.getMessage(i18nKey);
 

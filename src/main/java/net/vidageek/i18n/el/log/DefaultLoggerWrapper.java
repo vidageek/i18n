@@ -23,4 +23,8 @@ final public class DefaultLoggerWrapper implements LoggerWrapper {
         logger.warn(message);
     }
 
+    public void debug(final String message) {
+        logger.debug(message);
+    }
+
 }

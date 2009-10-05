@@ -36,4 +36,9 @@ final public class Logger {
         logger.warn(message);
     }
 
+    public void debug(final String string) {
+        logger.debug(string);
+
+    }
+
 }

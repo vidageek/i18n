@@ -2,8 +2,10 @@ package net.vidageek.i18n.message;
 
 /**
  * @author jonasabreu
- *
+ * 
  */
-final public class Language {
+public interface Language {
+
+    public String code();
 
 }

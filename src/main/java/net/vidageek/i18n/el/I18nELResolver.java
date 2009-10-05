@@ -7,7 +7,7 @@ import java.util.Iterator;
 import javax.el.ELContext;
 import javax.el.ELResolver;
 
-import net.vidageek.i18n.message.BundleLocator;
+import net.vidageek.i18n.message.MessageProducerLocator;
 import net.vidageek.i18n.message.LanguageLocator;
 import net.vidageek.i18n.message.MessageFactory;
 
@@ -20,7 +20,7 @@ final public class I18nELResolver extends ELResolver {
     private final MessageFactory factory;
 
     public I18nELResolver() {
-        factory = new MessageFactory(new LanguageLocator(), new BundleLocator());
+        factory = new MessageFactory(new LanguageLocator(), new MessageProducerLocator());
     }
 
     @Override

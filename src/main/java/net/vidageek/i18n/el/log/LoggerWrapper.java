@@ -10,4 +10,6 @@ public interface LoggerWrapper {
 
     public void warn(final String message);
 
+    public void debug(String string);
+
 }
