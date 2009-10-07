@@ -31,15 +31,17 @@ final public class I18nFilter implements Filter {
                 LanguageLocator.setLanguage(requestParameter);
             } else {
                 HttpServletRequest servletRequest = (HttpServletRequest) request;
-                String requestAttribute = servletRequest.getSession().getAttribute("i18n_lang").toString();
+                Object requestAttribute = servletRequest.getSession().getAttribute("i18n_lang");
                 if (requestAttribute != null) {
-                    LanguageLocator.setLanguage(requestAttribute);
+                    LanguageLocator.setLanguage(requestAttribute.toString());
                 } else {
                     Cookie[] cookies = servletRequest.getCookies();
-                    for (int i = 0; i < cookies.length; i++) {
-                        if ("i18n_lang".equals(cookies[i].getName())) {
-                            LanguageLocator.setLanguage(cookies[i].getValue());
-                            break;
+                    if (cookies != null) {
+                        for (int i = 0; i < cookies.length; i++) {
+                            if ("i18n_lang".equals(cookies[i].getName())) {
+                                LanguageLocator.setLanguage(cookies[i].getValue());
+                                break;
+                            }
                         }
                     }
 
@@ -49,7 +51,6 @@ final public class I18nFilter implements Filter {
         } finally {
             LanguageLocator.remove();
         }
-
     }
 
     public void init(final FilterConfig filterConfig) throws ServletException {
