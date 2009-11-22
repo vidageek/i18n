@@ -1,11 +1,10 @@
 package net.vidageek.i18n.message;
 
-
 /**
  * @author jonasabreu
  * 
  */
-final public class MessageFactory {
+public class MessageFactory {
 
     private final LanguageLocator languageLocator;
     private final MessageProducerLocator producerLocator;

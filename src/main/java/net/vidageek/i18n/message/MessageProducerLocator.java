@@ -13,7 +13,9 @@ import net.vidageek.i18n.el.log.Logger;
  */
 final public class MessageProducerLocator {
 
-    private static final Logger log = new Logger(MessageProducerLocator.class);
+    private final Logger log = new Logger(MessageProducerLocator.class);
+    private static final String FALLBACK_BUNDLE_NAME = "/messages.properties";
+
     private final ConcurrentHashMap<Language, Properties> bundles;
 
     private final Object lock = new Object();
@@ -68,7 +70,7 @@ final public class MessageProducerLocator {
 
     private String buildFileName(final Language language) {
         if (NotSetLanguage.class.isAssignableFrom(language.getClass())) {
-            return "/messages.properties";
+            return FALLBACK_BUNDLE_NAME;
         }
         return "/messages_" + language.code() + ".properties";
     }
