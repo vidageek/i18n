@@ -25,8 +25,8 @@ final public class I18nContextListener implements ServletContextListener {
 
         JspApplicationContext jspContext = JspFactory.getDefaultFactory().getJspApplicationContext(context);
 
-        jspContext.addELResolver(new I18nELResolver(new MessageFactory(new LanguageLocator(),
-                new MessageProducer())));
+        jspContext.addELResolver(new I18nELResolver(new MessageFactory(new LanguageLocator(), new MessageProducer(
+                "messages"))));
     }
 
 }

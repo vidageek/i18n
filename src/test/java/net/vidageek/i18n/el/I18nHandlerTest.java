@@ -1,9 +1,9 @@
 package net.vidageek.i18n.el;
 
 import junit.framework.Assert;
-import net.vidageek.i18n.message.MessageProducer;
 import net.vidageek.i18n.message.LanguageLocator;
 import net.vidageek.i18n.message.MessageFactory;
+import net.vidageek.i18n.message.MessageProducer;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +18,7 @@ final public class I18nHandlerTest {
 
     @Before
     public void setup() {
-        factory = new MessageFactory(new LanguageLocator(), new MessageProducer());
+        factory = new MessageFactory(new LanguageLocator(), new MessageProducer("messages"));
     }
 
     @Test
