@@ -82,6 +82,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.2</version>
 			</plugin>
 		</plugins>
 	</reporting>
@@ -162,33 +163,6 @@
 							<inputDir>src/docs/</inputDir>
 							<outputDir>target/tubaina</outputDir>
 							<templateDir>src/tubainaTemplates</templateDir>
-						</configuration>
-						<executions>
-							<execution>
-								<phase>install</phase>
-								<goals>
-									<goal>build</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>pt</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>br.com.caelum.tubaina</groupId>
-						<artifactId>tubaina-maven-plugin</artifactId>
-						<version>1.1-SNAPSHOT</version>
-						<configuration>
-							<bookName>I18n-pt</bookName>
-							<format>html</format>
-							<inputDir>src/docs/pt</inputDir>
-							<outputDir>target/tubaina</outputDir>
-							<templateDir>src/tubainaTemplates/pt</templateDir>
 						</configuration>
 						<executions>
 							<execution>
