@@ -2,6 +2,7 @@ package net.vidageek.i18n.message;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -15,27 +16,20 @@ final public class MessageProducer {
 
     private final Logger log = new Logger(MessageProducer.class);
 
-    private final ConcurrentHashMap<Language, Properties> bundles;
+    private final Map<Language, Properties> bundles;
 
     private final Object lock = new Object();
 
-    private final String baseName;
+    private final FileNameCreator creator;
 
-    public MessageProducer(final String baseName) {
-        this.baseName = baseName;
-        log.debug("created MessageProducer. Using [" + baseName + "] as base name.");
+    public MessageProducer(final FileNameCreator creator) {
+        this.creator = creator;
         bundles = new ConcurrentHashMap<Language, Properties>();
+        bundles.put(new NotSetLanguage(), readProperties(creator.createFileNameFor(new NotSetLanguage())));
     }
 
     public String getMessage(final String i18nKey, final Language language) {
-        return findProducer(language).getProperty(i18nKey, "??? " + i18nKey + " ???");
-    }
-
-    private Properties findProducer(final Language language) {
-
-        Properties properties = getBundle(language);
-
-        return properties;
+        return getBundle(language).getProperty(i18nKey, "??? " + i18nKey + " ???");
     }
 
     private Properties getBundle(final Language language) {
@@ -46,39 +40,37 @@ final public class MessageProducer {
                 properties = bundles.get(language);
                 if (properties == null) {
                     properties = readProperties(buildFileName(language));
-                    bundles.put(language, properties);
+                    // use fallback
+                    if (!properties.propertyNames().hasMoreElements()) {
+                        properties = bundles.get(new NotSetLanguage());
+                    }
                 }
+                bundles.put(language, properties);
             }
         }
         return properties;
     }
 
     private Properties readProperties(final String fileName) {
-
         log.debug("Reading file " + fileName);
-
         Properties properties = new Properties();
 
         try {
-            InputStream stream = MessageFactory.class.getResourceAsStream(fileName);
+            InputStream stream = MessageProducer.class.getResourceAsStream(fileName);
             if (stream == null) {
-                log.warn("Could not find i18n properties " + fileName + ". Using default language.");
-                properties = getBundle(new NotSetLanguage());
+                log.warn("Could not find i18n properties " + fileName + ".");
             } else {
                 properties.load(stream);
             }
         } catch (IOException e) {
-            log.warn("Could not find i18n properties " + fileName + ". Using default language.", e);
-            properties = getBundle(new NotSetLanguage());
+            log.warn("Problem loading properties " + fileName + ". Using default language.", e);
         }
         return properties;
     }
 
     private String buildFileName(final Language language) {
-        if (NotSetLanguage.class.isAssignableFrom(language.getClass())) {
-            return "/" + baseName + ".properties";
-        }
-        return "/" + baseName + "_" + language.code() + ".properties";
+        return creator.createFileNameFor(language);
+
     }
 
 }

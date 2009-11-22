@@ -6,6 +6,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.jsp.JspApplicationContext;
 import javax.servlet.jsp.JspFactory;
 
+import net.vidageek.i18n.message.FileNameCreator;
 import net.vidageek.i18n.message.LanguageLocator;
 import net.vidageek.i18n.message.MessageFactory;
 import net.vidageek.i18n.message.MessageProducer;
@@ -26,7 +27,6 @@ final public class I18nContextListener implements ServletContextListener {
         JspApplicationContext jspContext = JspFactory.getDefaultFactory().getJspApplicationContext(context);
 
         jspContext.addELResolver(new I18nELResolver(new MessageFactory(new LanguageLocator(), new MessageProducer(
-                "messages"))));
+                new FileNameCreator("messages")))));
     }
-
 }

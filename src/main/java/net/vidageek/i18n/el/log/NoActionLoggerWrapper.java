@@ -18,4 +18,8 @@ final public class NoActionLoggerWrapper implements LoggerWrapper {
 
     }
 
+    public void fatal(final String string) {
+
+    }
+
 }

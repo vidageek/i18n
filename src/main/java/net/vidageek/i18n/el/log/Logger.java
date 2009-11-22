@@ -41,4 +41,8 @@ final public class Logger {
 
     }
 
+    public void fatal(final String string) {
+        logger.fatal(string);
+    }
+
 }

@@ -1,6 +1,7 @@
 package net.vidageek.i18n.el;
 
 import junit.framework.Assert;
+import net.vidageek.i18n.message.FileNameCreator;
 import net.vidageek.i18n.message.LanguageLocator;
 import net.vidageek.i18n.message.MessageFactory;
 import net.vidageek.i18n.message.MessageProducer;
@@ -18,7 +19,7 @@ final public class I18nHandlerTest {
 
     @Before
     public void setup() {
-        factory = new MessageFactory(new LanguageLocator(), new MessageProducer("messages"));
+        factory = new MessageFactory(new LanguageLocator(), new MessageProducer(new FileNameCreator("messages")));
     }
 
     @Test

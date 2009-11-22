@@ -17,6 +17,9 @@ final public class NotSetLanguage implements Language {
 
     @Override
     public boolean equals(final Object obj) {
+        if (obj == null) {
+            return false;
+        }
         return code().equals(((Language) obj).code());
     }
 

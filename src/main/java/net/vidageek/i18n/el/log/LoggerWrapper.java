@@ -12,4 +12,6 @@ public interface LoggerWrapper {
 
     public void debug(String string);
 
+    public void fatal(String string);
+
 }
