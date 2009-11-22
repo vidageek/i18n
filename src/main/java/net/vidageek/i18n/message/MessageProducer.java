@@ -1,6 +1,11 @@
 package net.vidageek.i18n.message;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
+import java.util.concurrent.ConcurrentHashMap;
+
+import net.vidageek.i18n.el.log.Logger;
 
 /**
  * @author jonasabreu
@@ -8,14 +13,70 @@ import java.util.Properties;
  */
 final public class MessageProducer {
 
-    private final Properties properties;
+    private final Logger log = new Logger(MessageProducer.class);
+    private static final String FALLBACK_BUNDLE_NAME = "/messages.properties";
 
-    public MessageProducer(final Properties properties) {
-        this.properties = properties;
+    private final ConcurrentHashMap<Language, Properties> bundles;
+
+    private final Object lock = new Object();
+
+    public MessageProducer() {
+        log.debug("created MessageProducerLocator");
+        bundles = new ConcurrentHashMap<Language, Properties>();
     }
 
-    public String getMessage(final String i18nKey) {
-        return properties.getProperty(i18nKey, "??? " + i18nKey + " ???");
+    public String getMessage(final String i18nKey, final Language language) {
+        return findProducer(language).getProperty(i18nKey, "??? " + i18nKey + " ???");
+    }
+
+    private Properties findProducer(final Language language) {
+
+        Properties properties = getBundle(language);
+
+        return properties;
+    }
+
+    private Properties getBundle(final Language language) {
+        log.debug("getting bundle for language " + language);
+        Properties properties = bundles.get(language);
+        if (properties == null) {
+            synchronized (lock) {
+                properties = bundles.get(language);
+                if (properties == null) {
+                    properties = readProperties(buildFileName(language));
+                    bundles.put(language, properties);
+                }
+            }
+        }
+        return properties;
+    }
+
+    private Properties readProperties(final String fileName) {
+
+        log.debug("Reading file " + fileName);
+
+        Properties properties = new Properties();
+
+        try {
+            InputStream stream = MessageFactory.class.getResourceAsStream(fileName);
+            if (stream == null) {
+                log.warn("Could not find i18n properties " + fileName + ". Using default language.");
+                properties = getBundle(new NotSetLanguage());
+            } else {
+                properties.load(stream);
+            }
+        } catch (IOException e) {
+            log.warn("Could not find i18n properties " + fileName + ". Using default language.", e);
+            properties = getBundle(new NotSetLanguage());
+        }
+        return properties;
+    }
+
+    private String buildFileName(final Language language) {
+        if (NotSetLanguage.class.isAssignableFrom(language.getClass())) {
+            return FALLBACK_BUNDLE_NAME;
+        }
+        return "/messages_" + language.code() + ".properties";
     }
 
 }

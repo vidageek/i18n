@@ -8,7 +8,7 @@ import javax.servlet.jsp.JspFactory;
 
 import net.vidageek.i18n.message.LanguageLocator;
 import net.vidageek.i18n.message.MessageFactory;
-import net.vidageek.i18n.message.MessageProducerLocator;
+import net.vidageek.i18n.message.MessageProducer;
 
 /**
  * @author jonasabreu
@@ -26,7 +26,7 @@ final public class I18nContextListener implements ServletContextListener {
         JspApplicationContext jspContext = JspFactory.getDefaultFactory().getJspApplicationContext(context);
 
         jspContext.addELResolver(new I18nELResolver(new MessageFactory(new LanguageLocator(),
-                new MessageProducerLocator())));
+                new MessageProducer())));
     }
 
 }
