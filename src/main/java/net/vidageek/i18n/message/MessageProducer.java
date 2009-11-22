@@ -2,6 +2,7 @@ package net.vidageek.i18n.message;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
@@ -60,7 +61,7 @@ final public class MessageProducer {
             if (stream == null) {
                 log.warn("Could not find i18n properties " + fileName + ".");
             } else {
-                properties.load(stream);
+                properties.load(new InputStreamReader(stream, "UTF-8"));
             }
         } catch (IOException e) {
             log.warn("Problem loading properties " + fileName + ". Using default language.", e);
