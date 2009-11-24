@@ -16,10 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import junit.framework.Assert;
-import net.vidageek.i18n.message.DefaultLanguage;
-import net.vidageek.i18n.message.Language;
-import net.vidageek.i18n.message.LanguageLocator;
-import net.vidageek.i18n.message.NotSetLanguage;
+import net.vidageek.i18n.language.DefaultLanguage;
+import net.vidageek.i18n.language.Language;
+import net.vidageek.i18n.language.LanguageLocator;
+import net.vidageek.i18n.language.NotSetLanguage;
 
 import org.junit.After;
 import org.junit.Before;

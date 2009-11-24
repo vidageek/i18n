@@ -6,8 +6,8 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.jsp.JspApplicationContext;
 import javax.servlet.jsp.JspFactory;
 
+import net.vidageek.i18n.language.LanguageLocator;
 import net.vidageek.i18n.message.FileNameCreator;
-import net.vidageek.i18n.message.LanguageLocator;
 import net.vidageek.i18n.message.MessageFactory;
 import net.vidageek.i18n.message.MessageProducer;
 

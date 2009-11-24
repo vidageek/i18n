@@ -11,7 +11,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-import net.vidageek.i18n.message.LanguageLocator;
+import net.vidageek.i18n.language.LanguageFinder;
+import net.vidageek.i18n.language.LanguageLocator;
 
 /**
  * @author jonasabreu
@@ -25,6 +26,9 @@ final public class I18nFilter implements Filter {
 
     public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain chain)
             throws IOException, ServletException {
+        for (LanguageFinder finder : findersFor(request)) {
+
+        }
         try {
             String requestParameter = request.getParameter("i18n_lang");
             if (requestParameter != null) {

@@ -1,5 +1,7 @@
 package net.vidageek.i18n.message;
 
+import net.vidageek.i18n.language.LanguageLocator;
+
 /**
  * @author jonasabreu
  * 

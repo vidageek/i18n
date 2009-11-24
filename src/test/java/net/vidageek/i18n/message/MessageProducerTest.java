@@ -2,6 +2,9 @@ package net.vidageek.i18n.message;
 
 import junit.framework.Assert;
 
+import net.vidageek.i18n.language.DefaultLanguage;
+import net.vidageek.i18n.language.NotSetLanguage;
+
 import org.junit.Test;
 
 /**

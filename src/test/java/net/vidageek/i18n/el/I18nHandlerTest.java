@@ -1,8 +1,8 @@
 package net.vidageek.i18n.el;
 
 import junit.framework.Assert;
+import net.vidageek.i18n.language.LanguageLocator;
 import net.vidageek.i18n.message.FileNameCreator;
-import net.vidageek.i18n.message.LanguageLocator;
 import net.vidageek.i18n.message.MessageFactory;
 import net.vidageek.i18n.message.MessageProducer;
 

@@ -1,6 +1,8 @@
 package net.vidageek.i18n.message;
 
 import net.vidageek.i18n.el.log.Logger;
+import net.vidageek.i18n.language.Language;
+import net.vidageek.i18n.language.NotSetLanguage;
 
 /**
  * @author jonasabreu
