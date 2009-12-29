@@ -1,0 +1,53 @@
+[chapter Configuration]
+
+[section web.xml]
+
+It's quite easy to start using I18n. You just need to copy the following lines on your web.xml
+
+[xml]
+<listener>
+	<listener-class>net.vidageek.i18n.el.I18nContextListener</listener-class>
+</listener>
+
+<filter>
+	<filter-name>i18n</filter-name>
+	<filter-class>net.vidageek.i18n.filter.I18nFilter</filter-class>
+</filter>
+
+<filter-mapping>
+	<filter-name>i18n</filter-name>
+	<url-pattern>/*</url-pattern>
+</filter-mapping>
+[/xml]
+
+That's it.
+
+[section Messages key file]
+I18n follows a simples convention for naming messages file (a properties file).
+
+[code]
+messages.properties => The file I18n will use if it can't find a specific message properties file.
+messages_something.properties => "something" will the code for the language. So, if the file is named 
+	messages_pt-BR.properties, it will be responsible for pt-BR lang code.
+[/code]
+
+Inside the files, just add your keys and values:
+
+[code]
+your.key = Any text you want to display
+[/code]
+
+[section Changing the language]
+I18n does not attempt to discover which language to use. You must inform it on one of the following ways:
+
+[list 1]
+* A request parameter named i18n_lang
+* A session attribute named i18n_lang
+* A cookie named i18n_lang
+[/list]
+
+This means that if you set the language on session and I18n finds a request parameter i18n_lang, the language 
+of the request will be used.
+
+The i18n_lang value is used to read you messages file. For example, if i18n_lang is "pt-BR", the file read
+will be messages_pt-BR.properties 

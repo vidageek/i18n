@@ -1,0 +1,82 @@
+[chapter Project]
+
+I18n is a simple way to deal with internationalization on java web application.
+
+[section Versioning]
+
+I18n uses a simple versioning system:
+
+i18n-A.B.C.jar
+
+[list]
+* C - Critical bug resolutions.
+* B - Feature added + bug resolutions.
+* A - Tons of features or API change.
+[/list] 
+
+[section Release Notes]
+
+[list]
+* **I18n 0.4 - 2009 December 29**
+
+- First public release
+
+[/list]
+
+[section Download]
+
+You can browse all Mirror releases and sources at http://maven.vidageek.net/net/vidageek/i18n 
+or http://github.com/vidageek/i18n/downloads .
+
+If you use maven to build your project, you can just add the following lines to your pom.xml:
+[xml]
+<dependencies>
+...
+	<dependency>
+	    <groupId>net.vidageek</groupId>
+	    <artifactId>i18n</artifactId>
+	    <version>0.4</version>
+	</dependency>
+...
+</dependencies>
+<repositories>
+...
+	<repository>
+		<id>vidageek</id>
+		<name>VidaGeek.net Maven repository</name>
+		<url>http://maven.vidageek.net/</url>
+	</repository>
+...
+</repositories>
+[/xml]
+
+Or even browse and checkout our sources at http://github.com/vidageek/i18n/ .
+
+[section BugTracker And Email lists]
+
+[title Email Lists]
+
+[list]
+* Development Mailing list: http://lista.vidageek.net/listinfo.cgi/i18n-dev-vidageek.net
+** Discussions on anything related to i18n.
+[/list]
+
+[title Bugtracker]
+
+Just go to http://github.com/vidageek/i18n/issues and don't be ashamed of creating a new ticket!
+
+[section Project Members]
+
+Currently active project members are:
+
+[list]
+* Jonas Abreu (jonas [at] vidageek [dot] net)
+[/list]
+
+[section Get Involved]
+
+You can get involved to I18n in a lot of ways. If you are just using it, you are already really helping us. 
+Patches of any kind (source, documentation, etc) are always welcome. You can send your patches through our 
+bugtracking system. Another way you can help is by answering new user's questions on our mailing list and 
+also by giving us your feedback. You can even translate I18n documentation to your native language and help 
+us spreading the project around the world.
