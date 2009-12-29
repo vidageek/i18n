@@ -1,11 +1,10 @@
-package net.vidageek.i18n.filter;
+package net.vidageek.i18n.language.finder;
 
 import javax.servlet.http.Cookie;
 
 import net.vidageek.i18n.language.DefaultLanguage;
 import net.vidageek.i18n.language.Language;
 import net.vidageek.i18n.language.NotSetLanguage;
-import net.vidageek.i18n.language.finder.LanguageFinder;
 
 /**
  * @author jonasabreu

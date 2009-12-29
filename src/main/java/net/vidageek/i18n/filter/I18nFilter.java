@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import net.vidageek.i18n.language.Language;
 import net.vidageek.i18n.language.LanguageLocator;
 import net.vidageek.i18n.language.NotSetLanguage;
+import net.vidageek.i18n.language.finder.CookieLanguageFinder;
 import net.vidageek.i18n.language.finder.LanguageFinder;
 import net.vidageek.i18n.language.finder.RequestParameterLanguageFinder;
 import net.vidageek.i18n.language.finder.SessionAttributeLanguageFinder;

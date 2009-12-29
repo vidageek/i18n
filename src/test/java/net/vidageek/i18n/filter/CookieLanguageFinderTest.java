@@ -4,6 +4,7 @@ import javax.servlet.http.Cookie;
 
 import net.vidageek.i18n.language.DefaultLanguage;
 import net.vidageek.i18n.language.NotSetLanguage;
+import net.vidageek.i18n.language.finder.CookieLanguageFinder;
 
 import org.junit.Assert;
 import org.junit.Test;
