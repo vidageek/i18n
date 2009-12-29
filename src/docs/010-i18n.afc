@@ -20,7 +20,7 @@ I really like Expression Language, so I decided to turn that code above into
 <input type="submit" value="${i18n.your.key.value}" />
 [/code]
 
-And that's it. All you need to do is add //i18n.// before your key value on a expression language.
+And that's it. All you need to do is add ::i18n.:: before your key value on a expression language.
 
 Ow! I almost forgot. Take a look at how to configure it to work this way (actually, you'll just 
 need to copy it's configuration on your web.xml)

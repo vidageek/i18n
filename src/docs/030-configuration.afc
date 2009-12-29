@@ -26,9 +26,11 @@ That's it.
 I18n follows a simples convention for naming messages file (a properties file).
 
 [code]
-messages.properties => The file I18n will use if it can't find a specific message properties file.
-messages_something.properties => "something" will the code for the language. So, if the file is named 
-	messages_pt-BR.properties, it will be responsible for pt-BR lang code.
+messages.properties => The file I18n will use if it can't find a specific message 
+                  properties file.
+messages_something.properties => "something" will the code for the language. So, 
+                  if the file is named messages_pt-BR.properties, it will be 
+                  responsible for pt-BR lang code.
 [/code]
 
 Inside the files, just add your keys and values:
