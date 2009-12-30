@@ -39,15 +39,6 @@ If you use maven to build your project, you can just add the following lines to 
 	</dependency>
 ...
 </dependencies>
-<repositories>
-...
-	<repository>
-		<id>vidageek</id>
-		<name>VidaGeek.net Maven repository</name>
-		<url>http://maven.vidageek.net/</url>
-	</repository>
-...
-</repositories>
 [/xml]
 
 Or even browse and checkout our sources at http://github.com/vidageek/i18n/ .
