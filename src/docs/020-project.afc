@@ -25,7 +25,7 @@ i18n-A.B.C.jar
 
 [section Download]
 
-You can browse all Mirror releases and sources at http://maven.vidageek.net/net/vidageek/i18n 
+You can browse all I18n releases and sources at http://maven.vidageek.net/net/vidageek/i18n 
 or http://github.com/vidageek/i18n/downloads .
 
 If you use maven to build your project, you can just add the following lines to your pom.xml:
