@@ -1,8 +1,12 @@
 package net.vidageek.i18n.message;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Scanner;
@@ -35,15 +39,25 @@ final public class MessageProducer {
 	public String getMessage(final String i18nKey, final Language language) {
 		Properties bundle = getBundle(language);
 		if (bundle.getProperty(i18nKey) == null) {
-			String path = "/i18n/" + language.code() + "/" + i18nKey;
-			InputStream stream = MessageProducer.class.getResourceAsStream(path);
-			if (stream != null) {
-				String longMessage = new Scanner(stream).useDelimiter("$$").next();
-				bundle.setProperty(i18nKey, longMessage);
-				return longMessage;
-			}
+			String fromResource = getMessageFromResource(i18nKey, language);
+			bundle.setProperty(i18nKey, fromResource);
+			return fromResource;
 		}
-		return getBundle(language).getProperty(i18nKey, "??? " + i18nKey + " ???");
+		return getBundle(language).getProperty(i18nKey);
+	}
+
+	private String getMessageFromResource(final String i18nKey, final Language language) {
+		String path = "/i18n/" + language.code() + "/" + i18nKey;
+		InputStream stream = MessageProducer.class.getResourceAsStream(path);
+		String longMessage = "??? " + i18nKey + " ???";
+		if (stream == null) {
+			path = "/i18n/default/" + i18nKey;
+			stream = MessageProducer.class.getResourceAsStream(path);
+		}
+		if (stream != null) {
+			longMessage = new Scanner(stream).useDelimiter("$$").next();
+		}
+		return longMessage;
 	}
 
 	private Properties getBundle(final Language language) {
