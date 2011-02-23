@@ -17,6 +17,11 @@ i18n-A.B.C.jar
 [section Release Notes]
 
 [list]
+* **I18n 0.5 - 2011 February 23**
+
+- Improved Documentation
+- Added a better way to deal with long messages
+
 * **I18n 0.4 - 2009 December 29**
 
 - First public release
@@ -25,7 +30,7 @@ i18n-A.B.C.jar
 
 [section Download]
 
-You can browse all I18n releases and sources at http://maven.vidageek.net/net/vidageek/i18n 
+You can browse all I18n releases and sources at https://oss.sonatype.org/content/groups/public/net/vidageek/i18n/ 
 or http://github.com/vidageek/i18n/downloads .
 
 If you use maven to build your project, you can just add the following lines to your pom.xml:
@@ -35,7 +40,7 @@ If you use maven to build your project, you can just add the following lines to 
 	<dependency>
 	    <groupId>net.vidageek</groupId>
 	    <artifactId>i18n</artifactId>
-	    <version>0.4</version>
+	    <version>0.5</version>
 	</dependency>
 ...
 </dependencies>
@@ -48,8 +53,10 @@ Or even browse and checkout our sources at http://github.com/vidageek/i18n/ .
 [title Email Lists]
 
 [list]
-* Development Mailing list: http://lista.vidageek.net/listinfo.cgi/i18n-dev-vidageek.net
-** Discussions on anything related to i18n. **
+* Users Mailing list: http://groups.google.com/group/vidageek-users
+** Doubts about how to use I18n should come here.
+* Development Mailing list: http://groups.google.com/group/vidageek-dev
+** Discussions on new features or bugs.
 [/list]
 
 [title Bugtracker]
@@ -62,6 +69,7 @@ Currently active project members are:
 
 [list]
 * Jonas Abreu (jonas [at] vidageek [dot] net)
+* Edmilson Miyasaki
 [/list]
 
 [section Get Involved]
