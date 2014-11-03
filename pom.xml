@@ -114,19 +114,6 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>maven-jetty-plugin</artifactId>
 				<version>6.1.18</version>
@@ -163,37 +150,6 @@
 			</extension>
 		</extensions>
 	</build>
-
-	<profiles>
-		<profile>
-			<id>en</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>br.com.caelum.tubaina</groupId>
-						<artifactId>tubaina-maven-plugin</artifactId>
-						<version>1.1-SNAPSHOT</version>
-						<configuration>
-							<bookName>I18n</bookName>
-							<format>html</format>
-							<inputDir>src/docs/</inputDir>
-							<outputDir>target/tubaina</outputDir>
-							<templateDir>src/tubainaTemplates</templateDir>
-						</configuration>
-						<executions>
-							<execution>
-								<phase>install</phase>
-								<goals>
-									<goal>build</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
-
 
 	<developers>
 		<developer>
